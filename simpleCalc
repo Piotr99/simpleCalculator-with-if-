@@ -43,16 +43,18 @@
         that = this.textContent;
         char.textContent = that;
         function startCalc() {
-          if (that === '+') {
-            final = parseInt(firstInput.value) + parseInt(secondInput.value);
-          } else if (that === '-') {
-            final = parseInt(firstInput.value) - parseInt(secondInput.value);
-          } else if (that === '*') {
-            final = parseInt(firstInput.value) * parseInt(secondInput.value);
-          } else if (that === ':') {
-            final = parseInt(firstInput.value) / parseInt(secondInput.value);
+          if (firstInput.value && secondInput.value) {
+            if (that === '+') {
+              final = parseInt(firstInput.value) + parseInt(secondInput.value);
+            } else if (that === '-') {
+              final = parseInt(firstInput.value) - parseInt(secondInput.value);
+            } else if (that === '*') {
+              final = parseInt(firstInput.value) * parseInt(secondInput.value);
+            } else if (that === ':') {
+              final = parseInt(firstInput.value) / parseInt(secondInput.value);
+            }
+            result.textContent = final;
           }
-          result.textContent = final;
         }
 
         btn.addEventListener('click', startCalc);
