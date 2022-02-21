@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      div {
+        display: inline-block;
+        text-align: center;
+        background-color: aquamarine;
+        width: 30px;
+        height: 30px;
+        line-height: 30px;
+      }
+      section {
+        margin: 5px;
+        position: relative;
+      }
+    </style>
+  </head>
+  <body>
+    <input class="first" /> <span class="operator"></span>
+    <input class="second" />
+    <button class="wynik">=</button>
+    <span class="wypisz">Wynik</span>
+    <section>
+      <div>+</div>
+      <div>-</div>
+      <div>*</div>
+      <div>:</div>
+    </section>
+    <script>
+      const firstInput = document.querySelector('.first');
+      const secondInput = document.querySelector('.second');
+      const btn = document.querySelector('.wynik');
+      let result = document.querySelector('.wypisz');
+      let char = document.querySelector('.operator');
+      const operators = document.querySelectorAll('div');
+      let final = null;
+      function selectOperation() {
+        that = this.textContent;
+        char.textContent = that;
+        function startCalc() {
+          if (that === '+') {
+            final = parseInt(firstInput.value) + parseInt(secondInput.value);
+          } else if (that === '-') {
+            final = parseInt(firstInput.value) - parseInt(secondInput.value);
+          } else if (that === '*') {
+            final = parseInt(firstInput.value) * parseInt(secondInput.value);
+          } else if (that === ':') {
+            final = parseInt(firstInput.value) / parseInt(secondInput.value);
+          }
+          result.textContent = final;
+        }
+
+        btn.addEventListener('click', startCalc);
+      }
+
+      for (let operator of operators) {
+        operator.addEventListener('click', selectOperation);
+      }
+    </script>
+  </body>
+</html>
